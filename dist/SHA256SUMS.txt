@@ -1,0 +1,2 @@
+﻿6600557106127ff63aeb888ad188310f4cc62d5da10aabae27af0fc7e74709a6  folotoy-ai-passport-nav-v0.3.bin  (2053184 bytes)
+cd9c40befcea8f1948b8e4c6f89b7ace1f9f0e79ad9f49d7f9a0e931aa016979  nav-companion-v0.3.apk  (2433266 bytes)

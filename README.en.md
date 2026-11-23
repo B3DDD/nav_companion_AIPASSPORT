@@ -85,15 +85,70 @@ nav-companion/
 └── CHANGELOG.md
 ```
 
-## Quick start
+## Download and install
 
-**Just want to run it?** The community play page ships a prebuilt merged firmware and the app:
+Pick either route — both ship the **same version** (firmware and app must match, protocol v0.3).
 
-- Find 「越野导航副屏」 in the AI Passport play community
-- Firmware: use the Install button on the play page, or flash the `.bin` from `0x0` with the [web flasher](https://ai-passport.folotoy.cn/tools/web-flasher/)
-- App: see the download link in the play page (Android 12 or newer)
+> The CDN links below go through jsDelivr, which is usually faster than a direct GitHub download; the `GitHub` links point at the raw file in the repository.
 
-Step-by-step instructions: [docs/04-usage.md](docs/04-usage.md).
+### Route 1: from GitHub
+
+> Direct GitHub downloads can be slow depending on your network, so each file has two links: `CDN` goes through jsDelivr, `GitHub` points at the raw file in the repo.
+
+| File | Download | Size |
+|---|---|---|
+| **Firmware** (merged image) | [CDN](https://cdn.jsdelivr.net/gh/B3DDD/nav_companion_AIPASSPORT@main/dist/folotoy-ai-passport-nav-v0.3.bin) · [GitHub](dist/folotoy-ai-passport-nav-v0.3.bin) | 2.0 MB |
+| **App** (Android 12+) | [CDN](https://cdn.jsdelivr.net/gh/B3DDD/nav_companion_AIPASSPORT@main/dist/nav-companion-v0.3.apk) · [GitHub](dist/nav-companion-v0.3.apk) | 2.4 MB |
+
+Older versions live in [Releases](../../releases); checksums are in [`dist/SHA256SUMS.txt`](dist/SHA256SUMS.txt).
+
+**Step 1 — flash the firmware**
+
+1. On a computer, open <https://ai-passport.folotoy.cn/tools/web-flasher/> in Chrome or Edge
+2. Connect the card with a **data-capable** USB cable
+3. Choose the `.bin` you just downloaded
+4. Set the **flash offset to `0x0`** (not `0x10000`), leave the baud rate at `115200`
+5. Flash and wait for the progress bar to finish; the card reboots on its own
+6. The screen shows "Waiting for phone" — the firmware is in place
+
+**Step 2 — install the app**
+
+1. Copy the `.apk` to the phone (file transfer, USB, cloud drive — anything works)
+2. Open it and allow "unknown sources" for this install
+3. Grant **location**, **nearby devices (Bluetooth)** and **notifications**
+
+**Step 3 — unblock background execution** (otherwise the link drops on lock screen)
+
+- Huawei: Settings → Apps → App launch → Nav Companion → turn off automatic management, enable auto-start, associated start and background activity
+- Xiaomi: Settings → Apps → Manage apps → Nav Companion → battery saver → **No restrictions**
+- OPPO / vivo / Samsung: set battery optimisation / background restriction to **unrestricted**
+
+**Step 4 — start navigating**: see [the usage guide](docs/04-usage.md).
+
+### Route 2: AI Passport community + cloud drive (more reliable inside China)
+
+**Step 1 — flash from the community play page** (no firmware download needed)
+
+1. Open <https://ai-passport.folotoy.cn>
+2. Go to the play community and search for 「**越野导航副屏**」
+3. Open the play page and tap **Install**
+4. Follow the prompts to connect the card and flash from `0x0`
+5. The card reboots and shows "Waiting for phone"
+
+**Step 2 — get the app from the cloud drive**
+
+1. The play page lists the link: <https://pan.baidu.com/s/1jT1RZGS7v3539salS99OiA>, code **`xj55`**
+2. Download `导航副屏-app（11.22）.apk`, copy it to the phone and install, allowing "unknown sources"
+
+**Step 3 — permissions and background settings**: same as Route 1.
+
+### Which route?
+
+| Your situation | Use |
+|---|---|
+| You want the newest build and a version history | **Route 1** (GitHub) |
+| GitHub is slow or unreachable | **Route 2** (community + cloud drive) |
+| Firmware already flashed, only the app is missing | Route 2, step 2 |
 
 ## Build from source
 

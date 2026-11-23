@@ -17,9 +17,12 @@ android/*.iml
 android/captures/
 *.hprof
 
-# ---------- 发布产物（走 GitHub Releases，不入库） ----------
+# ---------- 发布产物 ----------
+# dist/ 里的文件**需要入库**：既是 GitHub Releases 的附件来源，
+# 也是 jsDelivr 加速直链（国内下载）的内容。其余位置的安装包不入库。
 /releases/
 *.apk
+!dist/*.apk
 
 # ---------- 通用 ----------
 .DS_Store

@@ -1,4 +1,4 @@
-# 越野导航副屏 · Trail Nav Companion
+﻿# 越野导航副屏 · Trail Nav Companion
 
 <p align="center">
   <img src="docs/images/cover.jpg" width="300" alt="越野导航副屏">
@@ -91,15 +91,90 @@ nav-companion/
 └── CHANGELOG.md
 ```
 
-## 快速开始
+## 下载安装
 
-**不想编译？** 社区玩法页提供现成的合并固件与 App 安装包：
+两种方式任选其一，拿到的是**同一个版本**（固件与 App 必须配套，协议 v0.3）。
 
-- 玩法页：在 AI Passport 玩法社区搜索「**越野导航副屏**」
-- 固件：从玩法页「安装」按钮刷入，或用 [web-flasher](https://ai-passport.folotoy.cn/tools/web-flasher/) 选 `.bin` 从 `0x0` 刷入
-- App：见玩法页说明里的网盘链接（Android 12 及以上）
+> 加速直链走 jsDelivr CDN（国内通常更快）；也可以直接点 `GitHub` 链接从仓库下载。
 
-**上手步骤**见 [docs/04-usage.md](docs/04-usage.md)，与玩法页说明一致。
+### 方式一：从 GitHub 下载
+
+> 国内直连 GitHub 可能较慢，所以每个文件都给了**两条链接**：`加速直链` 走 jsDelivr CDN（国内通常更快），`GitHub` 是仓库内原始文件。
+
+**第 1 步：下载两个文件**
+
+| 文件 | 下载 | 大小 |
+|---|---|---|
+| **固件**（合并镜像） | [加速直链](https://cdn.jsdelivr.net/gh/B3DDD/nav_companion_AIPASSPORT@main/dist/folotoy-ai-passport-nav-v0.3.bin) · [GitHub](dist/folotoy-ai-passport-nav-v0.3.bin) | 2.0 MB |
+| **App**（Android 12+） | [加速直链](https://cdn.jsdelivr.net/gh/B3DDD/nav_companion_AIPASSPORT@main/dist/nav-companion-v0.3.apk) · [GitHub](dist/nav-companion-v0.3.apk) | 2.4 MB |
+
+历史版本见 [Releases](../../releases)；校验值见 [`dist/SHA256SUMS.txt`](dist/SHA256SUMS.txt)。
+
+**第 2 步：刷固件**
+
+1. 电脑用 Chrome 或 Edge 打开 <https://ai-passport.folotoy.cn/tools/web-flasher/>
+2. 用**能传数据**的 USB 线把卡片连到电脑
+3. 点「选择文件」，选刚下载的 `.bin`
+4. **刷写偏移填 `0x0`**（不是 `0x10000`），波特率保持 `115200`
+5. 点「刷入」，等进度走完，卡片会自动重启
+6. 屏幕出现「**等待手机连接**」→ 固件已就位
+
+**第 3 步：安装 App**
+
+1. 把 `.apk` 传到手机（微信文件传输助手、数据线、网盘都可以）
+2. 点开安装；提示「未知来源」时允许**本次**安装
+3. 打开 App，把**定位、附近设备（蓝牙）、通知**三项权限全部允许
+
+**第 4 步：设置后台保活**（不设的话锁屏就会断）
+
+- 华为：设置 → 应用和服务 → 应用启动管理 → 导航副屏 → 关闭「自动管理」→ 勾选**自启动、关联启动、后台活动**
+- 小米：设置 → 应用设置 → 应用管理 → 导航副屏 → 省电策略 → **无限制**
+- OPPO / vivo / 三星：在「电池优化 / 后台限制」里设为**不限制**
+
+**第 5 步：开始导航** → 详见 [使用说明](docs/04-usage.md)
+
+---
+
+### 方式二：AI Passport 社区 + 网盘（国内更稳）
+
+**第 1 步：在社区里刷固件**（不用自己下载固件文件）
+
+1. 打开 <https://ai-passport.folotoy.cn>
+2. 进入「玩法社区」，搜索「**越野导航副屏**」
+3. 打开玩法页，点「**安装**」
+4. 按提示用 Chrome / Edge 连接卡片，从 `0x0` 刷入
+5. 刷完卡片自动重启，屏幕显示「等待手机连接」
+
+> 社区会直接把对应版本的固件推到卡片上，省掉下载 `.bin` 和填偏移的步骤。
+
+**第 2 步：从网盘下载 App**
+
+1. 玩法页说明里给了网盘链接：<https://pan.baidu.com/s/1jT1RZGS7v3539salS99OiA>，提取码 **`xj55`**
+2. 登录百度网盘，下载 `导航副屏-app（11.22）.apk`
+3. 传到手机安装，允许「未知来源」
+
+**第 3 步：权限与后台保活** —— 同方式一的第 3、4 步。
+
+---
+
+### 怎么选
+
+| 你的情况 | 建议 |
+|---|---|
+| 想要最新版、能看版本记录 | **方式一**（GitHub，版本与 tag 一一对应） |
+| 访问 GitHub 慢、只想快点装上 | **方式二**（社区刷固件 + 网盘下 App） |
+| 固件已经刷好了，只缺 App | 方式二的第 2 步即可 |
+
+### 校验下载完整性（可选）
+
+```powershell
+# Windows PowerShell
+Get-FileHash .\nav-companion-v0.3.apk -Algorithm SHA256
+```
+
+把输出与 [`dist/SHA256SUMS.txt`](dist/SHA256SUMS.txt) 里的值对照即可。联网设备很少出错，但慢速下载中断时值得核对一次。
+
+**上手步骤**（含 GPX 准备、方向选择、两页界面说明）见 [docs/04-usage.md](docs/04-usage.md)。
 
 ## 从源码构建
 
