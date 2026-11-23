@@ -1,0 +1,31 @@
+# ---------- ESP-IDF 固件 ----------
+firmware/build/
+firmware/sdkconfig
+firmware/sdkconfig.old
+firmware/managed_components/
+firmware/.vscode/
+firmware/.idea/
+firmware/*.bin
+
+# ---------- Android ----------
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+android/*.iml
+android/captures/
+*.hprof
+
+# ---------- 发布产物（走 GitHub Releases，不入库） ----------
+/releases/
+*.apk
+
+# ---------- 通用 ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+__pycache__/
+*.pyc
+.venv/

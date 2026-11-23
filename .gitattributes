@@ -1,0 +1,11 @@
+* text=auto
+
+# Shell / Gradle 启动脚本必须保持 LF，否则在 Windows 上无法执行
+*.sh   text eol=lf
+gradlew text eol=lf
+
+# Windows 批处理保持 CRLF
+*.bat  text eol=crlf
+
+# 固件镜像与点阵字体按二进制处理
+*.bin binary
