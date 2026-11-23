@@ -24,5 +24,5 @@ Get-FileHash .\nav-companion-v0.3.apk -Algorithm SHA256
 ## 约定
 
 - 每次发版**覆盖**这两个文件，并把版本号写进文件名（`-vX.Y`）。
-- 历史版本请到 [Releases](../../releases) 下载（tag 对应版本）。
+- 历史版本请到 [Releases](https://github.com/B3DDD/nav_companion_AIPASSPORT/releases) 下载（tag 对应版本）。
 - 固件是 **merged 镜像**，必须从 `0x0` 刷入；只刷 app 分区会启动失败。
